@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        /* CSS untuk pop-up */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+        }
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 80%;
+            max-height: 80%;
+            overflow-y: auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .popup-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+        .border-indigo-600 {
+            border-color: #4f46e5 !important;
+        }
+    </style>
+</head>
+<body>
+    <!--promotion -->
+    <div class="bg-indigo-600 px-4 py-3 text-white">
+        <p class="text-center text-sm font-medium">
+          promo Diskon hingga 100%
+          <a href="#" class="inline-block underline">berlaku untuk detik ini!</a>
+        </p>
+    </div>
+    <!--end promotion -->
+
+    <!--navbar -->
+    <header>
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+          <div class="sm:flex sm:items-center sm:justify-between">
+            <div class="text-center sm:text-left">
+              <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">RISKAWAN STORE</h1>
+              <p class="mt-1.5 text-sm text-gray-500">SEDIA BERBAGAI MACAM ALUTSISTA PERANG! 🎉</p>
+            </div>
+            <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+             <a href="halaman baru.html"
+                class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-gray-200 px-5 py-3 text-gray-500 transition hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:ring"
+                type="button">
+                <span class="text-sm font-medium"> CARA BELANJA </span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
+              </a>
+              <a href="https://wa.me/+6281809208710">
+                <div class="mt-4 flex flex-col gap-4 sm:mt-0 sm:flex-row sm:items-center">
+              <button class="inline-flex items-center justify-center gap-1.5 rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" type="button">
+                CHAT ADMIN
+              </button>
+            </div>
+              </a>
+            </div>
+          </div>
+        </div>
+    </header>
+    <!--end navbar -->
+
+    <!--call to action BUTTON -->
+    <section class="bg-gray-50">
+        <div class="p-8 md:p-12 lg:px-16 lg:py-24">
+          <div class="mx-auto max-w-lg text-center">
+            <h2 class="text-2xl font-bold text-gray-900 md:text-3xl">
+              Selamat Datang Di Riskawan Store
+            </h2>
+            <p class="hidden text-gray-500 sm:mt-4 sm:block">
+              Di Riskawan Store tersedia berbagai macam macam alutsista yang anda butuhkan, yang dapat memudahkan anda
+              dalam menginvansi suatu negara,
+            </p>
+          </div>
+          <div class="mx-auto mt-8 max-w-xl">
+            <form id="search-form" class="sm:flex sm:gap-4">
+              <div class="sm:flex-1">
+                <input id="search-input" type="text" placeholder="Cari Product..." class="w-full rounded-md border-gray-200 bg-white p-3 text-gray-700 shadow-sm transition focus:border-white focus:outline-none focus:ring focus:ring-indigo-700"/>
+              </div>
+              <button type="submit" class="group mt-4 flex w-full items-center justify-center gap-2 rounded-md bg-indigo-700 px-5 py-3 text-white transition focus:outline-none focus:ring focus:ring bg-indigo-700 sm:mt-0 sm:w-auto">
+                <span class="text-sm font-medium"> Cari Product </span> 
+                <svg class="size-5 rtl:rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+    </section>
+    <!--END TO CALL TO ACTION BUTTON-->
+
+    <!--PRODUCT LIST -->
+    <div id="product-list" class="container grid grid-cols-3 gap-4 max-w-xl mx-auto py-8">
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Bismarck', 'Rp.1.500.000', 'https://i.pinimg.com/564x/de/92/81/de9281ccb8e1560948f8a192e9c7de24.jpg')">
+        <img src="https://i.pinimg.com/564x/de/92/81/de9281ccb8e1560948f8a192e9c7de24.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Bismarck</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">USS Missouri</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Eurofighter Typhoon', 'Rp.1.500.000', 'https://i.pinimg.com/564x/ff/d4/ed/ffd4ed741a1ce214e1edf87b0ce02a2f.jpg')">
+        <img src="https://i.pinimg.com/564x/ff/d4/ed/ffd4ed741a1ce214e1edf87b0ce02a2f.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Eurofighter Typhoon</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('B2 Spirit', 'Rp.1.500.000', 'https://i.pinimg.com/564x/4c/4b/74/4c4b749b59b3d8e0240f6692b32e1511.jpg')">
+        <img src="https://i.pinimg.com/564x/4c/4b/74/4c4b749b59b3d8e0240f6692b32e1511.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">B2 Spirit</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Mitsubishi A6M Zero', 'Rp.1.500.000', 'https://i.pinimg.com/564x/2e/fd/c9/2efdc99bcd3cebc08e03b0e0384cc61b.jpg')">
+        <img src="https://i.pinimg.com/564x/2e/fd/c9/2efdc99bcd3cebc08e03b0e0384cc61b.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Mitsubishi A6M Zero</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('P-51 Mustang', 'Rp.1.500.000', 'https://i.pinimg.com/564x/f1/b9/42/f1b942c4230bc819fec6ade14e823686.jpg')">
+        <img src="https://i.pinimg.com/564x/f1/b9/42/f1b942c4230bc819fec6ade14e823686.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">P-51 Mustang</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal MUsashi', 'Rp.1.500.000', 'https://i.pinimg.com/564x/57/83/25/578325d514da6404e1109d77b5b69aa1.jpg')">
+        <img src="https://i.pinimg.com/564x/57/83/25/578325d514da6404e1109d77b5b69aa1.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal MUsashi</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg"alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Katyusha', 'Rp.1.500.000', 'https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg')">
+        <img src="https://i.pinimg.com/originals/d1/28/67/d12867e2ce090a009397f8e5c600cff4.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Katyusha</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('F22 Raptor', 'Rp.1.500.000', 'https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg')">
+        <img src="https://i.pinimg.com/736x/2a/09/db/2a09db366544b5145decafe8959d3c1a.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">F22 Raptor</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Kapal Yamato', 'Rp.1.500.000', 'https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg')">
+        <img src="https://i.pinimg.com/originals/1a/fd/8a/1afd8acbdabdde378bf4a257d9f452ad.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Kapal Yamato</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('Sukhoi su-30', 'Rp.1.500.000', 'https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg')">
+        <img src="https://i.pinimg.com/originals/4e/67/e3/4e67e3b6f44d5741f34a2baa1f5bc986.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+      <a href="#" class="group block" onclick="showPopup('USS Missouri', 'Rp.1.500.000', 'https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg')">
+        <img src="https://i.pinimg.com/564x/81/5e/3f/815e3fbf4fc81cebd4424ffe7eae074e.jpg" alt="" class="aspect-square w-full rounded object-cover"/>
+        <div class="mt-3">
+          <h3 class="font-medium text-gray-900 group-hover:underline group-hover:underline-offset-4">Sukhoi su-30</h3>
+          <p class="mt-1 text-sm text-gray-700">Rp.1.500.000</p>
+        </div>
+      </a>
+    </div>
+    <!--END LIST PRODUCT -->
+
+    <!-- Pop-up -->
+    <div id="popup" class="popup">
+        <div class="popup-content max-w-lg">
+            <span class="popup-close text-gray-700 text-3xl">&times;</span>
+            <h2 id="popup-title" class="text-xl font-semibold text-gray-900 mb-4"></h2>
+            <img id="popup-image" src="" alt="" class="mb-4 rounded-lg">
+            <p id="popup-price" class="text-gray-700"></p>
+            <div id="popup-colors" class="mt-4">
+                <p class="text-gray-700">Pilih Warna:</p>
+                <div class="flex gap-2 mt-2">
+                    <button class="color-option bg-red-500 w-8 h-8 rounded-full border border-gray-300" data-color="Merah"></button>
+                    <button class="color-option bg-blue-500 w-8 h-8 rounded-full border border-gray-300" data-color="Biru"></button>
+                    <button class="color-option bg-green-500 w-8 h-8 rounded-full border border-gray-300" data-color="Hijau"></button>
+                </div>
+            </div>
+            <a id="buy-now" href="#" class="block rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white mt-4 transition hover:bg-indigo-700 focus:outline-none focus:ring">
+                Beli Sekarang
+            </a>
+        </div>
+    </div>
+    <!-- End Pop-up -->
+
+    <script>
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const products = document.querySelectorAll('#product-list a');
+            products.forEach(product => {
+                const productName = product.querySelector('h3').innerText.toLowerCase();
+                if (productName.includes(query)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        });
+
+        function showPopup(title, price, image) {
+            document.getElementById('popup-title').innerText = title;
+            document.getElementById('popup-price').innerText = price;
+            document.getElementById('popup-image').src = image;
+            document.getElementById('popup').style.display = 'block';
+
+            const buyNowButton = document.getElementById('buy-now');
+            buyNowButton.setAttribute('data-title', title);
+            buyNowButton.setAttribute('data-price', price);
+        }
+
+        document.querySelectorAll('.popup-close').forEach(item => {
+            item.addEventListener('click', () => {
+                document.getElementById('popup').style.display = 'none';
+            });
+        });
+
+        document.querySelectorAll('.color-option').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.color-option').forEach(btn => btn.classList.remove('border-indigo-600'));
+                this.classList.add('border-indigo-600');
+
+                const selectedColor = this.getAttribute('data-color');
+                const buyNowButton = document.getElementById('buy-now');
+                buyNowButton.setAttribute('data-color', selectedColor);
+            });
+        });
+
+        document.getElementById('buy-now').addEventListener('click', function(event) {
+            event.preventDefault();
+
+            const title = this.getAttribute('data-title');
+            const price = this.getAttribute('data-price');
+            const color = this.getAttribute('data-color') || 'Tidak ada warna yang dipilih';
+
+            const whatsappUrl = `https://wa.me/+6281809208710?text=Saya%20ingin%20membeli%20${title}%20dengan%20harga%20${price}%20warna%20${color}`;
+            window.location.href = whatsappUrl;
+        });
+    </script>
+</body>
+<!--FOOTER-->
+<footer>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Website</title>
+  <!-- Ganti bagian ini dengan CSS sesuai kebutuhan -->
+  <style>
+      .logo {
+          width: 200px; /* sesuaikan ukuran logo */
+          height: auto;
+      }
+  </style>
+  <!-- Ganti 'logo.png' dengan nama file logo Anda dan sesuaikan path jika perlu -->
+  <img src="logo.png" alt="Logo Website" class="logo">
+    <div class="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
+        © 2024. All rights reserved.
+    </div>
+</footer>
+<!--END FOOTER-->
+</html>
